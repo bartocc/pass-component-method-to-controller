@@ -2,19 +2,20 @@ import Controller from '@ember/controller';
 import { action } from '@ember-decorators/object';
 
 export default class ApplicationController extends Controller {
-  childFunctions = [];
+  componentInstances = [];
 
   @action
-  foo(childFunction) {
+  foo(componentInstance) {
     console.log("I am the 'foo' action of ApplicationController");
-    this.childFunctions.pushObject(childFunction);
+    this.componentInstances.pushObject(componentInstance);
   }
 
   @action
   save() {
     console.log("I am the 'save' action of ApplicationController");
-    this.childFunctions.forEach((childFunction) => {
-      childFunction();
+    this.componentInstances.forEach((componentInstance) => {
+      componentInstance.bar();
+      componentInstance.baz();
     });
   }
 }

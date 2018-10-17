@@ -9,8 +9,12 @@ export default class MyCompComponent extends Component {
     this.set('barHasBeenCalled', true);
   }
 
+  baz() {
+    console.log("I am the 'baz' method of MyCompComponent");
+  }
+
   didInsertElement() {
     super.didInsertElement(...arguments);
-    this.aParentAction(this.bar.bind(this));
+    this.aParentAction(this);
   }
 }
